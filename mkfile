@@ -1,3 +1,8 @@
+<split.mk
+SPLITFILES=´{find -L data/ -name '*.fastq' | sed -e "s#^data/#results/split/#g" -e "s#$#.$SPLIT_IN#g"}
+
+split:V: $SPLITFILES
+
 'results/split/(.*)\.fastq\.([0-9]+)':R:	'data/\1\.fastq'
 	mkdir -p `dirname $target`
 	NFILES=$stem2
