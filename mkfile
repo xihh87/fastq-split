@@ -10,4 +10,5 @@ split:V: $SPLITFILES
 	FASTQ_ENTRY_LEN=4
 	# This ensures the split is a multiple of FASTQ_ENTRY_LEN
 	PARTSIZE=`python -c "import math; print(math.ceil($NLINES / ($NFILES * $FASTQ_ENTRY_LEN)) * $FASTQ_ENTRY_LEN)"`
-	split --numeric-suffixes=1 -l $PARTSIZE $prereq $prereq.
+	PREFIX=`echo $target | sed -e "s#$stem2"'$'"##g"`
+	split --numeric-suffixes=1 -l $PARTSIZE $prereq "$PREFIX"
