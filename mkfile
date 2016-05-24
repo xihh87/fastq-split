@@ -1,5 +1,5 @@
 <split.mk
-SPLITFILES=´{find -L data/ -name '*.fastq' | sed -e "s#^data/#results/split/#g" -e "s#$#.$SPLIT_IN#g"}
+SPLITFILES=`{find -L data/ -name '*.fastq' | sed -e "s#^data/#results/split/#g" -e "s#"'$'"#.$SPLIT_IN#g"}
 
 split:V: $SPLITFILES
 
