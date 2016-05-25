@@ -17,7 +17,8 @@ split:V: $SPLITFILES
 		--numeric-suffixes=1 \
 		-l $PARTSIZE \
 		--additional-suffix=.fastq \
-		$prereq "$PREFIX"
+		$prereq "$PREFIX" \
+	&& rm $prereq
 
 data/%.fastq:	data/%.fastq.gz
 	gzip -d -c $prereq > $target
